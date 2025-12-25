@@ -1,3 +1,252 @@
+/* ===================== GLOM THEME ===================== */
+:root{
+  --bg:#0b0b14;
+  --bg2:#0f1020;
+  --card:#14142b;
+  --border:#2a2a55;
+  --primary:#7b5cff;
+  --primary2:#9a84ff;
+  --text:#eaeaff;
+  --muted:#9aa0ff;
+  --danger:#ff5c7b;
+  --success:#3cffb4;
+}
 
-body{background:#0b0014;color:#eee;font-family:Segoe UI}
-header{padding:16px;font-size:24px}
+*{
+  box-sizing:border-box;
+  font-family:Inter,system-ui,-apple-system;
+}
+
+body{
+  margin:0;
+  background:radial-gradient(1200px 600px at top,var(--bg2),var(--bg));
+  color:var(--text);
+}
+
+/* ===== Topbar ===== */
+.topbar{
+  height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 20px;
+  border-bottom:1px solid var(--border);
+  background:rgba(10,10,30,.7);
+  backdrop-filter:blur(10px);
+}
+
+.brand{
+  font-weight:900;
+  font-size:20px;
+}
+.brand span{color:var(--primary)}
+
+.icon-btn{
+  background:none;
+  border:none;
+  color:var(--text);
+  cursor:pointer;
+}
+
+/* ===== Side Menu ===== */
+.sideMenu{
+  position:fixed;
+  top:64px;
+  right:-260px;
+  width:260px;
+  height:100%;
+  background:var(--card);
+  border-left:1px solid var(--border);
+  transition:.3s;
+  z-index:10;
+}
+.sideMenu.show{right:0}
+
+.sideHead{
+  padding:14px;
+  display:flex;
+  justify-content:space-between;
+  border-bottom:1px solid var(--border);
+}
+
+.cats{
+  padding:10px;
+}
+.catBtn{
+  width:100%;
+  background:none;
+  border:1px solid var(--border);
+  color:var(--text);
+  padding:10px;
+  margin-bottom:8px;
+  border-radius:10px;
+  cursor:pointer;
+}
+.catBtn.active{
+  background:var(--primary);
+  border-color:var(--primary);
+}
+
+/* ===== Main ===== */
+.main{
+  padding:20px;
+}
+
+.hint{
+  opacity:.6;
+  margin-bottom:14px;
+}
+
+/* ===== Grid ===== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:20px;
+}
+
+/* ===== Cards ===== */
+.card{
+  background:linear-gradient(180deg,#18183a,#11112a);
+  border:1px solid var(--border);
+  border-radius:18px;
+  overflow:hidden;
+  transition:.3s;
+  opacity:0;
+  transform:translateY(20px);
+}
+.card.show{
+  opacity:1;
+  transform:none;
+}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 40px rgba(123,92,255,.25);
+}
+
+.card img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+}
+
+.pad{padding:14px}
+
+.title{
+  font-weight:800;
+  font-size:18px;
+}
+.desc{
+  font-size:14px;
+  opacity:.7;
+  margin:6px 0;
+}
+
+.meta{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  margin:8px 0;
+}
+
+.pill{
+  font-size:12px;
+  background:rgba(123,92,255,.15);
+  border:1px solid var(--primary);
+  padding:4px 8px;
+  border-radius:20px;
+}
+
+/* ===== Buttons ===== */
+.btn{
+  width:100%;
+  background:linear-gradient(135deg,var(--primary),var(--primary2));
+  color:#fff;
+  border:none;
+  padding:12px;
+  border-radius:12px;
+  font-weight:800;
+  cursor:pointer;
+}
+.btn.ghost{
+  background:none;
+  border:1px solid var(--border);
+}
+
+/* ===== Modal ===== */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:50;
+}
+.modal.hidden{display:none}
+
+.modalBox{
+  width:420px;
+  max-width:92%;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:16px;
+}
+
+.modalHead{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:10px;
+}
+
+.inp,select{
+  width:100%;
+  background:#0c0c22;
+  border:1px solid var(--border);
+  color:var(--text);
+  padding:12px;
+  border-radius:10px;
+  margin:6px 0;
+}
+
+.small{
+  font-size:13px;
+  opacity:.7;
+}
+
+/* ===== Avatar ===== */
+.avatar{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--primary),var(--primary2));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  cursor:pointer;
+}
+
+/* ===== User Menu ===== */
+.userMenu{
+  position:absolute;
+  top:48px;
+  right:0;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  overflow:hidden;
+}
+.userMenu.hidden{display:none}
+.userMenu .itm{
+  padding:10px 14px;
+  cursor:pointer;
+}
+.userMenu .itm:hover{
+  background:rgba(255,255,255,.05);
+}
+
+/* ===== Responsive ===== */
+@media(max-width:700px){
+  .grid{grid-template-columns:1fr}
+}
