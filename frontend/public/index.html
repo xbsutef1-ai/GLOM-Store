@@ -1,0 +1,16 @@
+
+<!DOCTYPE html><html><head>
+<link rel="stylesheet" href="/theme.css"></head>
+<body>
+<header>GLOM Store</header>
+<div id="list"></div>
+<a href="https://discord.gg/Y9aE4YyCaS" target="_blank">Support</a>
+<script>
+fetch('/api/store/products').then(r=>r.json()).then(d=>{
+ list.innerHTML=d.map(p=>`<div>
+ <img src="${p.images?.[0]||''}" width=200>
+ <h3>${p.title}</h3>
+ <a href="/product.html?id=${p._id}">Open</a>
+ </div>`).join('');
+});
+</script></body></html>
